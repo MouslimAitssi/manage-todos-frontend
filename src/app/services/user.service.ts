@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Task } from '../model/Task';
 import { User } from '../model/User';
 import { JwtTokenService } from './jwt-token.service';
 
@@ -11,16 +12,15 @@ import { JwtTokenService } from './jwt-token.service';
   providedIn: 'root'
 })
 export class UserService {
-  getUsers = "/users/";
-  addUser = "/users/create/";
+  usersUrl = "/users";
+  addUser = "/users/create";
   constructor(
     private jwtTokenService: JwtTokenService,
     private http: HttpClient,
     private snackBar: MatSnackBar) { }
 
-
   getAllUsers(): Observable<User[]> {
-    let url = environment.url.concat(this.getUsers).concat("get");
+    let url = environment.url.concat(this.usersUrl).concat("/get");
     console.log(url);
     const token = this.jwtTokenService.getToken();
     const headers = new HttpHeaders({
@@ -30,7 +30,7 @@ export class UserService {
   }
 
   getUser(username: string): Observable<User[]> {
-    let url = environment.url.concat(this.getUsers).concat(username);
+    let url = environment.url.concat(this.usersUrl).concat(username);
     console.log(url);
     const token = this.jwtTokenService.getToken();
     const headers = new HttpHeaders({
@@ -45,6 +45,16 @@ export class UserService {
     return this.http.post<User>(url, user).pipe(tap((response)=>{
       this.snackBar.open('Registered successfully!')._dismissAfter(2000);
     }));
+  }
+
+  getTasks(username: string): Observable<Task[]> {
+    let url = environment.url.concat(this.usersUrl).concat("/task/get/").concat(username);
+    console.log(url);
+    const token = this.jwtTokenService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + token,
+    });
+    return this.http.get<Task[]>(url, {headers: headers}).pipe(tap((tasks)=>{console.log(tasks)}));
   }
 
 }

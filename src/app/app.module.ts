@@ -19,13 +19,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    DragDropModule,
     FormsModule,
     RouterModule.forRoot(routes),
   ],

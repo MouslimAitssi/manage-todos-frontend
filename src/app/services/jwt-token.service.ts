@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../response/LoginResponse';
 import jwt_decode from 'jwt-decode';
+import { Roles } from '../enums/Role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,9 @@ export class JwtTokenService {
     sessionStorage.removeItem("jwtToken");
   }
 
-  getDecodedToken(): LoginResponse {
+  getDecodedToken() {
     if(this.getToken()) {
-      let decodedToken: LoginResponse = jwt_decode(this.getToken());
+      let decodedToken = jwt_decode<{sub: string; exp: number; role: Roles}>(this.getToken());
       return decodedToken;
     }
   }
