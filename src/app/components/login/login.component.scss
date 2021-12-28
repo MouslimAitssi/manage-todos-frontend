@@ -1,0 +1,21 @@
+.actions {
+  //position:fixed;
+  overflow-x:hidden;
+  margin: auto;
+  bottom: 10px;
+}
+
+.content {
+  display: flex;
+}
+
+.login-button {
+  background-color: rgb(11, 172, 172);
+  color: white;
+  width: 100%;
+  padding: 1%;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "manage-todos-frontend"
+    }
+  },
+  "defaultProject": "manage-todos-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
