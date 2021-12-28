@@ -17,7 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   openLoginForm() {
-    this.dialog.open(LoginComponent);
+    this.dialog.open(LoginComponent, {
+      height: '300px',
+      width: '500px',
+    });
   }
 
   logout() {
@@ -27,7 +30,10 @@ export class HeaderComponent implements OnInit {
   }
 
   openRegisterForm() {
-    this.dialog.open(RegisterComponent);
+    this.dialog.open(RegisterComponent, {
+      height: '500px',
+      width: '500px',
+    });
   }
 
   getJwtTokenService() {

@@ -2,7 +2,7 @@
   <span class="flex-spacer"></span>
   <button mat-button *ngIf="!getJwtTokenService().getToken()" (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</button>
   <button mat-button *ngIf="!getJwtTokenService().getToken()" (click)="openRegisterForm()"><span class="fa fa-user-plus fa-lg"></span> Register</button>
-  <h3 *ngIf="getJwtTokenService().getToken()">{{getJwtTokenService().getDecodedToken().sub | titlecase}}</h3>
+  <h3 *ngIf="getJwtTokenService().getToken()">Bonjour {{getJwtTokenService().getDecodedToken().sub | titlecase}}</h3>
   <button mat-icon-button *ngIf="getJwtTokenService().getToken()" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <span class="fa fa-chevron-down fa-lg"></span>
   </button>

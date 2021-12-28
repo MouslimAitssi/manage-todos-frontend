@@ -1,1 +1,41 @@
-<p>register works!</p>
+<div class="main-div">
+  <mat-toolbar color="primary">
+    <h1 mat-dialog-title>Register</h1>
+    <span class="flex-spacer"></span>
+    <button mat-mini-fab mat-dialog-close color="warn" aria-label="Example icon button with a home icon">
+    <span class="fa fa-times"></span>
+    </button>
+  </mat-toolbar>
+
+  <form novalidate #registerForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username"  #username="ngModel" required>
+          <mat-error *ngIf="username.errors?.required">The username is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="row">
+          <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+          <mat-error *ngIf="password.errors?.required">The password is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="row">
+          <input matInput placeholder="email" type="text" [(ngModel)]="user.email" name="email" #email="ngModel" required>
+          <mat-error *ngIf="email.errors?.required">The email is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="mobile" type="text" [(ngModel)]="user.mobile" name="mobile" #mobile="ngModel" required>
+          <mat-error *ngIf="mobile.errors?.required">The mobile is required</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="actions">
+      <button mat-button type="submit" class="register-button">Submit</button>
+    </mat-dialog-actions>
+  </form>
+</div>
