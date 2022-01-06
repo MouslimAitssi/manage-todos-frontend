@@ -51,11 +51,6 @@ export class TasksComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    /* console.log(event.previousContainer === event.container);
-    console.log(event.container); */
-    /* event.container.entered.subscribe((element)=> {
-      console.log(element);
-    }); */
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
@@ -84,7 +79,7 @@ export class TasksComponent implements OnInit {
 
   addTask() {
       const dialogRef = this.dialog.open(AddTaskComponent, {
-        height: '600px',
+        height: '450px',
         width: '400px',
       });
       let instance = dialogRef.componentInstance;
@@ -104,14 +99,13 @@ export class TasksComponent implements OnInit {
 
   updateTask(task: Task) {
     const dialogRef = this.dialog.open(AddTaskComponent, {
-      height: '600px',
+      height: '450px',
       width: '400px',
     });
     let instance = dialogRef.componentInstance;
     instance.taskToAdd = task.task;
     instance.mode = "UPDATE";
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result.taskToAdd);
       if(result && result.taskToAdd != task.task) {
         task.task = result.taskToAdd
         this.isSubmitting = true;
@@ -126,8 +120,11 @@ export class TasksComponent implements OnInit {
 
   }
 
-  reloadComponent() {
-    this.router.navigateByUrl('/tasks').then(()=>{this.router.navigateByUrl('/tasks')})
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task).subscribe((response) => {
+      console.log(response);
+      location.reload();
+    })
   }
 
 }

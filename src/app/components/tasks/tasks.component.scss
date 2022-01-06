@@ -8,9 +8,14 @@
   position: relative;
 }
 
-.mat-fab {
+.add-button {
   position: absolute;
   right: 0%;
+  font-size: larger;
+}
+
+.edit-button {
+  background-color: aqua;
 }
 
 .containers {
