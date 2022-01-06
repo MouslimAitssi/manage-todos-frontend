@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Task } from '../model/Task';
 import { JwtTokenService } from './jwt-token.service';
@@ -27,7 +26,6 @@ export class TaskService {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + token,
     });
-    return this.http.put<Task>(url, task, {headers: headers}).pipe(tap((user)=>{console.log(user)}));
+    return this.http.put<Task>(url, task, {headers: headers});
   }
-
 }

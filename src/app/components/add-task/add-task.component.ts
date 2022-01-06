@@ -7,7 +7,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-  @Input() taskToAdd: string;
+  taskToAdd: string;
+  mode: string;
 
   constructor(public dialogRef: MatDialogRef<AddTaskComponent>) { }
 

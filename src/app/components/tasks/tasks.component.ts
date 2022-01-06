@@ -71,7 +71,7 @@ export class TasksComponent implements OnInit {
       this.taskService.updateTask(event.container.data[event.currentIndex]).subscribe((resp) => {
         if(resp) {
           this.isSubmitting = false;
-          location.reload();
+          //location.reload();
           console.log(resp);
         }
       });
@@ -82,11 +82,13 @@ export class TasksComponent implements OnInit {
     task.done = !task.done;
   }
 
-  addTask()  {
+  addTask() {
       const dialogRef = this.dialog.open(AddTaskComponent, {
         height: '600px',
         width: '400px',
       });
+      let instance = dialogRef.componentInstance;
+      instance.mode = "CREATE";
       dialogRef.afterClosed().subscribe(result => {
         if(result) {
           this.isSubmitting = true;
@@ -105,13 +107,18 @@ export class TasksComponent implements OnInit {
       height: '600px',
       width: '400px',
     });
+    let instance = dialogRef.componentInstance;
+    instance.taskToAdd = task.task;
+    instance.mode = "UPDATE";
     dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+      console.log(result.taskToAdd);
+      if(result && result.taskToAdd != task.task) {
+        task.task = result.taskToAdd
         this.isSubmitting = true;
         this.taskService.updateTask(task).subscribe((response: Task) => {
           console.log(response);
           this.isSubmitting = false;
-          location.reload();
+          //location.reload();
           //this.reloadComponent();
         });
       }
