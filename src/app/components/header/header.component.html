@@ -1,16 +1,18 @@
 <mat-toolbar color="primary">
+  <h3 style="margin-right: 2%;"><b>Manage Todos App</b></h3>
+
+  <button mat-button *ngIf="isNormalUser()" routerLinkActive="active" routerLink="/home"> Home</button>
+  <button mat-button *ngIf="isNormalUser()" routerLinkActive="active" routerLink="/tasks"> My tasks</button>
+  <button mat-button *ngIf="isAdmin()" routerLinkActive="active" routerLink="/manage-users"> Manage users</button>
+  <button mat-button *ngIf="isAdmin()" routerLinkActive="active" routerLink="/manage-tasks"> Manage tasks</button>
   <span class="flex-spacer"></span>
   <button mat-button *ngIf="!getJwtTokenService().getToken()" (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</button>
   <button mat-button *ngIf="!getJwtTokenService().getToken()" (click)="openRegisterForm()"><span class="fa fa-user-plus fa-lg"></span> Register</button>
-  <h3 *ngIf="getJwtTokenService().getToken()">Bonjour {{getJwtTokenService().getDecodedToken().sub | titlecase}}</h3>
+  <h3 *ngIf="getJwtTokenService().getToken()">Hello {{getJwtTokenService().getDecodedToken().sub | titlecase}}</h3>
   <button mat-icon-button *ngIf="getJwtTokenService().getToken()" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <span class="fa fa-chevron-down fa-lg"></span>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <span class="fa fa-cog fa-lg"></span>
-       Settings
-    </button>
     <button mat-menu-item (click)="logout()">
       <span class="fa fa-sign-out fa-lg"></span>
        Logout
@@ -20,8 +22,8 @@
 
 <div class="jumbotron">
   <div>
-    <h1>Manage Todos App!</h1>
-    <p>Manage your tasks happily and easily</p>
+    <h1><b>Manage Todos App</b></h1>
+    <p>Manage your tasks happily and easily!!</p>
   </div>
 
 </div>

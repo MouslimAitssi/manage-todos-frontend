@@ -1,0 +1,17 @@
+<mat-toolbar color="accent">
+  <h1 mat-dialog-title>Add a new task</h1>
+  <span class="flex-spacer"></span>
+  <button mat-mini-fab mat-dialog-close color="warn">
+    <span class="fa fa-times"></span>
+  </button>
+</mat-toolbar>
+
+<textarea
+style="width: 100%; margin: 5% 0% 3% 0%;"
+matInput
+placeholder="Add a new task"
+rows="12"
+[(ngModel)]="taskToAdd"
+></textarea>
+<span class="flex-spacer"></span>
+<button mat-button (click)="submit()">Submit</button>

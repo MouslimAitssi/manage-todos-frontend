@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Task } from '../model/Task';
 import { User } from '../model/User';
+import { UserTaskRequest } from '../request/UserTaskRequest';
 import { JwtTokenService } from './jwt-token.service';
 
 @Injectable({
@@ -13,7 +14,8 @@ import { JwtTokenService } from './jwt-token.service';
 })
 export class UserService {
   usersUrl = "/users";
-  addUser = "/users/create";
+  addUserUrl = "/users/create";
+  addTaskUrl = "/task/add"
   constructor(
     private jwtTokenService: JwtTokenService,
     private http: HttpClient,
@@ -40,7 +42,7 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    let url = environment.url.concat(this.addUser);
+    let url = environment.url.concat(this.addUserUrl);
     console.log(url);
     return this.http.post<User>(url, user).pipe(tap((response)=>{
       this.snackBar.open('Registered successfully!')._dismissAfter(2000);
@@ -55,6 +57,17 @@ export class UserService {
       'Authorization': "Bearer " + token,
     });
     return this.http.get<Task[]>(url, {headers: headers}).pipe(tap((tasks)=>{console.log(tasks)}));
+  }
+
+  addTask(userTaskRequest: UserTaskRequest): Observable<User>{
+    console.log(userTaskRequest);
+    let url = environment.url.concat(this.usersUrl).concat(this.addTaskUrl);
+    console.log(url);
+    const token = this.jwtTokenService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + token,
+    });
+    return this.http.put<User>(url, userTaskRequest, {headers: headers}).pipe(tap((user)=>{console.log(user)}));
   }
 
 }

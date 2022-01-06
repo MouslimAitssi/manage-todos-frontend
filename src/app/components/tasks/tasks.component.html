@@ -1,27 +1,64 @@
-<div class="example-container">
-  <h2>To do</h2>
-
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="todoTasks"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of todoTasks" cdkDrag>{{item.task}}</div>
+<!-- <div class="centerer">
+  <div class="aligner">
+    <button mat-fab color="accent" (click)="addTask()">
+      <span class="fa fa-upload"></span>
+    </button>
+    <button mat-fab color="primary" (click)="addTask()">
+      <span class="fa fa-plus"></span>
+    </button>
   </div>
+</div> -->
+
+<div class="container centerer">
+  <h2>{{getJwtTokenService().getDecodedToken().sub | titlecase}}'s tasks:</h2>
+  <div class="row">
+    <div class="containers">
+      <div style="width: 49%;">
+        <h3>To do:</h3>
+        <div class="example-container">
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todoTasks"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todoTasks" cdkDrag>{{item.task}}</div>
+          </div>
+        </div>
+        <mat-spinner color="primary" *ngIf="isSubmitting"></mat-spinner>
+
+      </div>
+      <div style="width: 49%;">
+        <h3>Done:</h3>
+        <div class="example-container">
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="doneTasks"
+            [cdkDropListConnectedTo]="[todoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of doneTasks" cdkDrag (click)="updateTask(item)">{{item.task}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="buttons">
+      <!-- <button mat-fab color="accent" (click)="addTask()">
+        <span class="fa fa-upload"></span>
+      </button> -->
+
+      <button mat-fab color="primary" (click)="addTask()">
+        <span class="fa fa-plus"></span>
+      </button>
+    </div>
+  </div>
+<!--   <div class="buttons row">
+
+  </div> -->
 </div>
 
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="doneTasks"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>{{item.task}}</div>
-  </div>
-</div>

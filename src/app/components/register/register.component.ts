@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Roles } from 'src/app/enums/Role.enum';
 import { User } from 'src/app/model/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.user.role = "USER";
+    this.user.role = Roles.NORMAL_USER;
     this.userService.createUser(this.user)
     .subscribe((response: User) => {
       this.dialogRef.close();

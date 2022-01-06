@@ -1,9 +1,35 @@
+.aligner {
+  margin-left: 3%;
+  display: flex;
+  gap: 40%;
+}
+
+.buttons {
+  position: relative;
+}
+
+.mat-fab {
+  position: absolute;
+  right: 0%;
+}
+
+.containers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.centerer {
+  text-align: center;
+}
+
 .example-container {
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+  /* max-width: 100%; */
   margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
+  height: 250px;
+  overflow-y: auto;
 }
 
 .example-list {
@@ -52,3 +78,9 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+/* .add-button {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+} */

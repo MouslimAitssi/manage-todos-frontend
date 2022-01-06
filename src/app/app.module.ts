@@ -17,10 +17,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HomeComponent } from './components/home/home.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { ManageTasksComponent } from './components/manage-tasks/manage-tasks.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    TasksComponent
+    TasksComponent,
+    HomeComponent,
+    AddTaskComponent,
+    ManageTasksComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +49,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatToolbarModule,
     MatDialogModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     DragDropModule,
+    MatIconModule,
     FormsModule,
     RouterModule.forRoot(routes),
   ],

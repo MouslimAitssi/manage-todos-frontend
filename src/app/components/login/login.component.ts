@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     .subscribe((response) => {
       console.log(response)
       this.jwtTokenService.setToken(response.jwt);
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     });
   }
 }

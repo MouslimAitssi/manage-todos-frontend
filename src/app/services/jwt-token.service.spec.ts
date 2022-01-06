@@ -10,7 +10,5 @@ describe('JwtTokenService', () => {
     service = TestBed.inject(JwtTokenService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+
 });

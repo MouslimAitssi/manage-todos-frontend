@@ -1,2 +1,36 @@
-<p>home works!</p>
-<button class="btn btn-danger" (click)="manageTasks()">Manage tasks</button>
+<div class="centerer">
+
+  <h2>Test the application:</h2>
+  <div class="container">
+  <div class="example-container">
+    <h3>To do:</h3>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todoTasks"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todoTasks" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h3>Done:</h3>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="doneTasks"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <div class="container">
+  <button class="btn btn-danger" (click)="manageTasks()">Manage my tasks</button>
+</div> -->
