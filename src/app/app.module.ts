@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -56,6 +57,7 @@ import { ManageUsersComponent } from './components/manage-users/manage-users.com
     MatFormFieldModule,
     DragDropModule,
     MatIconModule,
+    MatSidenavModule,
     FormsModule,
     RouterModule.forRoot(routes),
   ],
